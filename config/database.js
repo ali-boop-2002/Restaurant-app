@@ -1,22 +1,32 @@
+// /config/database.js
 import mongoose from "mongoose";
 
-let connected = false;
+let cached = global.mongoose;
 
-const connectDB = async () => {
-  mongoose.set("strictQuery", true);
+if (!cached) {
+  cached = global.mongoose = { conn: null, promise: null };
+}
 
-  // if the database is already connected, don't connect again
-  if (connected) {
-    console.log("MongoDB is connected");
-    return;
+async function connectDB() {
+  if (cached.conn) {
+    return cached.conn;
   }
-  // Connect to MongoDb
-  try {
-    await mongoose.connect(process.env.MONGODB_URI);
-    connected = true;
-  } catch (error) {
-    console.log(error);
+
+  if (!cached.promise) {
+    const opts = {
+      bufferCommands: false, // recommended for serverless
+      // useNewUrlParser and useUnifiedTopology are default in latest Mongoose
+    };
+
+    cached.promise = mongoose
+      .connect(process.env.MONGODB_URI, opts)
+      .then((mongoose) => {
+        return mongoose;
+      });
   }
-};
+
+  cached.conn = await cached.promise;
+  return cached.conn;
+}
 
 export default connectDB;
