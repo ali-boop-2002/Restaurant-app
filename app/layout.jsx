@@ -7,6 +7,15 @@ import store from "@/store";
 import { Winky_Rough } from "next/font/google";
 import { Provider } from "react-redux";
 
+export const metadata = {
+  title: "Pakstani chai dhaba",
+  description:
+    "We got all indian pakistani cuisine and everything is made fresh",
+  icons: {
+    icon: "/logo/—Pngtree—restaurant logo_8330101.png", // <-- your favicon file path
+  },
+};
+
 const winky = Winky_Rough({
   subsets: ["latin"],
   weight: ["400", "700", "900"], // available weights
