@@ -12,7 +12,7 @@ export const metadata = {
   description:
     "We got all indian pakistani cuisine and everything is made fresh",
   icons: {
-    icon: "/logo/—Pngtree—restaurant logo_8330101.png", // <-- your favicon file path
+    icon: "/logo/mylogo.png", // <-- your favicon file path
   },
 };
 
