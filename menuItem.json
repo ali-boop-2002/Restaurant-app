@@ -1,0 +1,82 @@
+[
+  {
+    "name": "chicken biryani",
+    "sides": {
+      "raita": false,
+      "white sauce": false,
+      "salad": true,
+      "naan": false
+    },
+    "description": "Fully cooked rice and chicken served hot and fresh",
+    "isFeatured": true,
+    "category": "main",
+    "veg": false
+  },
+  {
+    "name": "samosa",
+    "sides": {
+      "raita": true,
+      "white sauce": false,
+      "salad": false,
+      "naan": false
+    },
+    "description": "Crispy pastry filled with spiced potatoes and peas",
+    "isFeatured": true,
+    "category": "apetizers",
+    "veg": true
+  },
+  {
+    "name": "butter chicken",
+    "sides": {
+      "raita": true,
+      "white sauce": false,
+      "salad": false,
+      "naan": true
+    },
+    "description": "Tender chicken cooked in creamy tomato sauce",
+    "isFeatured": true,
+    "category": "main",
+    "veg": false
+  },
+  {
+    "name": "chana masala",
+    "sides": {
+      "raita": true,
+      "white sauce": false,
+      "salad": false,
+      "naan": true
+    },
+    "description": "Chickpeas cooked in a spicy onion-tomato gravy",
+    "isFeatured": false,
+    "category": "main",
+    "veg": true
+  },
+  {
+    "name": "Palak Paneer",
+    "sides": {
+      "raita": false,
+      "white sauce": false,
+      "salad": false,
+      "naan": true
+    },
+    "description": "Spinach and cottage cheese cooked with Indian spices",
+    "isFeatured": false,
+    "category": "main",
+    "veg": true
+  },
+  {
+    "name": "Mango Lassi",
+    "description": "Sweet yogurt drink with mango puree",
+    "size": ["small", "medium", "large"]
+  },
+  {
+    "name": "Rooh Afza",
+    "description": "Rose-flavored herbal drink",
+    "size": ["small", "medium", "large"]
+  },
+  {
+    "name": "Masala Chai",
+    "description": "Traditional spiced Indian tea with milk",
+    "size": ["small", "medium", "large"]
+  }
+]
