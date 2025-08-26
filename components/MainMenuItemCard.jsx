@@ -67,9 +67,11 @@ function MainMenuItemCard({ item }) {
         </div>
       </DialogTrigger>
 
-      <DialogContent className="bg-white h-[90vh] overflow-y-auto">
-        <DialogTitle className="text-3xl font-light">{item.name}</DialogTitle>
-        <DialogDescription className="text-xl">
+      <DialogContent className="bg-white h-[70vh] sm:h-[90vh] overflow-y-auto">
+        <DialogTitle className="sm:text-3xl font-light">
+          {item.name}
+        </DialogTitle>
+        <DialogDescription className="sm:text-xl">
           {item.description}
         </DialogDescription>
         <Image

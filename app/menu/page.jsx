@@ -16,13 +16,13 @@ export default function Page() {
   }, []);
 
   return (
-    <div className="h-screen overflow-y-auto">
-      <div className="top-15 bg-white/90  backdrop-blur-md z-10 py-4 fixed w-full">
+    <div className="min-h-screen overflow-y-auto">
+      <div className="top-15 bg-white/90  backdrop-blur-md z-10 sm:py-4 sm:fixed w-full">
         <button
           onClick={() =>
             mainRef.current?.scrollIntoView({ behavior: "smooth" })
           }
-          className="m-3 px-5 hover:bg-gray-200 hover:cursor-pointer hover:rounded-2xl"
+          className="sm:m-3 px-5 hover:bg-gray-200 hover:cursor-pointer hover:rounded-2xl"
         >
           Main Course
         </button>
@@ -30,7 +30,7 @@ export default function Page() {
           onClick={() =>
             appetizerRef.current?.scrollIntoView({ behavior: "smooth" })
           }
-          className="m-3 px-5 hover:bg-gray-200 hover:cursor-pointer hover:rounded-2xl"
+          className="sm:m-3 px-5 hover:bg-gray-200 hover:cursor-pointer hover:rounded-2xl"
         >
           Appetizers
         </button>
@@ -38,12 +38,12 @@ export default function Page() {
           onClick={() =>
             drinkRef.current?.scrollIntoView({ behavior: "smooth" })
           }
-          className="m-3 px-5 hover:bg-gray-200 hover:cursor-pointer hover:rounded-2xl"
+          className="sm:m-3 px-5 hover:bg-gray-200 hover:cursor-pointer hover:rounded-2xl"
         >
           Drinks
         </button>
       </div>
-      <div className="pt-40 container mx-auto ">
+      <div className="sm:pt-40 container mx-auto  ">
         <span ref={mainRef} className="text-2xl m-5 block">
           Main Courses
         </span>

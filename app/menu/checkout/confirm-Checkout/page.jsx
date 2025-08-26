@@ -160,10 +160,10 @@ function page() {
           <div className="flex flex-col container mx-auto max-w-4xl font-sans ">
             <div className="grid grid-cols-8 border-b-2 pb-2 border-gray-200 pt-2 ">
               <div className="col-span-2">
-                <h1 className=" font-sans text-2xl">Method</h1>
+                <h1 className=" font-sans sm:text-2xl">Method</h1>
               </div>
 
-              <div className="flex flex-col col-span-6  text-xl font-sans ">
+              <div className="flex flex-col col-span-6  sm:text-xl font-sans ">
                 <label>
                   <input
                     type="radio"
@@ -190,11 +190,11 @@ function page() {
             </div>
             <div className="grid grid-cols-8 border-b-2 pb-2 border-gray-200  pt-2">
               <div className="col-span-2">
-                <h1 className=" font-sans text-2xl">
+                <h1 className=" font-sans sm:text-2xl">
                   {method === "Delivery" ? "Delivery Time" : "Pickup Time"}
                 </h1>
               </div>
-              <div className="flex flex-col col-span-6   text-xl font-sans">
+              <div className="flex flex-col col-span-6   sm:text-xl font-sans">
                 <label>
                   <input
                     type="radio"
@@ -224,7 +224,7 @@ function page() {
                   <span>
                     Schedule{" "}
                     {day && newDate && hour && pickupTime !== "Standard" && (
-                      <span className="bg-yellow-400 rounded-4xl p-1">
+                      <span className=" rounded-4xl p-1">
                         {`${day}, ${newDate}, ${hour}`}
                       </span>
                     )}
@@ -246,7 +246,7 @@ function page() {
                               {date.map((d, index) => (
                                 <div key={index}>
                                   <div
-                                    className={`text-sm flex flex-col justify-center w-[85px] md:w-[105px] items-center hover:bg-gray-400  rounded-3xl hover:cursor-pointer transition-colors focus:bg-gray-700 ${
+                                    className={`text-sm flex flex-col justify-center w-[70px] md:w-[105px] items-center hover:bg-gray-400  rounded-3xl hover:cursor-pointer transition-colors focus:bg-gray-700 ${
                                       active === index &&
                                       "bg-gray-900 text-white hover:bg-gray-900"
                                     }`}
@@ -293,11 +293,11 @@ function page() {
               </div>
             </div>
 
-            <div className="grid grid-cols-8 border-b-2 pb-2 border-gray-200 pt-2  ">
-              <div className="col-span-2 ">
-                <h1 className=" font-sans text-2xl">Pickup address</h1>
+            <div className="grid grid-cols-8 border-b-2 pb-2 border-gray-200 pt-2   ">
+              <div className="sm:col-span-2 ">
+                <h1 className=" font-sans sm:text-2xl">Pickup address</h1>
               </div>
-              <div className="flex flex-col col-span-6 not-first:text-xl font-sans rounded-2xl h-[400px] ">
+              <div className="flex flex-col col-span-8 sm:col-span-6 px-4 sm:px-0 not-first:text-xl font-sans rounded-2xl h-[400px] ">
                 <MapSelector
                   onAddressSelected={handleAddressSelected}
                   methodType={method}
@@ -309,7 +309,7 @@ function page() {
               <div className="grid grid-cols-8 border-b-2 pb-2 border-gray-200 pt-2  ">
                 <div className="col-span-2 "></div>
                 <div className="flex flex-col col-span-6  ">
-                  <h2 className="text-2xl">Store Address</h2>
+                  <h2 className="sm:text-2xl">Store Address</h2>
                   <span className="mt-2">Oak Hill Ave Endicott, NY 13760</span>
                 </div>
               </div>
@@ -317,7 +317,7 @@ function page() {
               <div className="grid grid-cols-8 border-b-2 pb-2 border-gray-200 pt-2  ">
                 <div className="col-span-2 "></div>
                 <div className="flex flex-col col-span-6  ">
-                  <h2 className="text-xl">
+                  <h2 className="sm:text-xl">
                     {selectedLocation
                       ? selectedLocation.address.replace(", United States", "")
                       : "Please select address for delivery"}
@@ -389,18 +389,20 @@ function page() {
                 </div>
               </div>
             )}
-            <div className="grid grid-cols-8 border-b-2 pb-2 border-gray-200 pt-2 ">
-              <div className="col-span-2 ">
-                <h1 className=" font-sans text-2xl">Contact and payment</h1>
+            <div className="sm:grid  sm:grid-cols-8 border-b-2 pb-2 px-2 sm:px-0 border-gray-200 pt-2 ">
+              <div className="sm:col-span-2  ">
+                <h1 className=" font-sans sm:text-2xl text-center justify-center ">
+                  Contact and payment
+                </h1>
               </div>
-              <div className="flex flex-col col-span-6 container mx-auto px-1 overflow-scroll   text-xl font-sans">
+              <div className="flex flex-col sm:col-span-6 col-span-8 container mx-auto px-1 overflow-scroll   sm:text-xl font-sans">
                 <div className="flex flex-row  justify-start  space-x-4 ">
                   <div className="flex flex-col">
                     <label htmlFor="countryCode">Country:</label>
                     <select
                       id="countryCode"
                       name="countryCode"
-                      className="bg-gray-100 p-2 rounded focus:outline-2 focus:outline-black"
+                      className="bg-gray-100 sm:p-2 rounded focus:outline-2 focus:outline-black"
                     >
                       <option value="US">+1(US)</option>
                       <option value="CA">+1(CA)</option>
@@ -409,7 +411,7 @@ function page() {
                   <div className="flex flex-col  ">
                     <label htmlFor="phoneNumber">Phone Number</label>
                     <input
-                      className="bg-gray-100 p-2 rounded focus:outline-2 focus:outline-black"
+                      className="bg-gray-100 sm:p-2 rounded focus:outline-2 focus:outline-black"
                       id="phoneNumber"
                       onChange={(e) => setPhone(e.target.value)}
                     />
@@ -418,17 +420,17 @@ function page() {
                 <div className="flex flex-col   ">
                   <label htmlFor="email">Email</label>
                   <input
-                    className="bg-gray-100 p-2 rounded focus:outline-2 focus:outline-black"
+                    className="bg-gray-100 sm:p-2 rounded focus:outline-2 focus:outline-black"
                     id="email"
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
 
-                <div className="flex flex-row  justify-between sm:justify-start sm:space-x-4 ">
+                <div className="flex flex-row  justify-start sm:justify-start space-x-1 sm:space-x-4 ">
                   <div className="flex flex-col">
                     <label htmlFor="firstname">First Name</label>
                     <input
-                      className="bg-gray-100 p-2 w-[170px] sm:w-full rounded focus:outline-2 focus:outline-black"
+                      className="bg-gray-100 sm:p-2 w-[170px] sm:w-full rounded focus:outline-2 focus:outline-black"
                       id="firstname"
                       onChange={(e) => setFirstName(e.target.value)}
                     />
@@ -436,7 +438,7 @@ function page() {
                   <div className="flex flex-col ">
                     <label htmlFor="lastname">Last Name</label>
                     <input
-                      className="bg-gray-100 p-2 w-[170px] sm:w-full rounded focus:outline-2 focus:outline-black"
+                      className="bg-gray-100 sm:p-2 w-[170px] sm:w-full rounded focus:outline-2 focus:outline-black"
                       id="lastname"
                       onChange={(e) => setLastName(e.target.value)}
                     />

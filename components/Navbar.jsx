@@ -24,13 +24,13 @@ function Navbar() {
   if (!mounted) return null;
 
   return (
-    <div className="bg-amber-400 min-h-10 flex justify-between fixed top-0 w-full z-20 shadow-md">
+    <div className="bg-yellow-400  sm:min-h-10 flex justify-between text-center items-center sm:fixed top-0 w-full z-20 shadow-md">
       <Link href="/">
-        <div className="text-2xl m-4 hover:cursor-pointer">
+        <div className="sm:text-2xl sm:m-4 hover:cursor-pointer ">
           Pakistani chai dhaba
         </div>
       </Link>
-      <div className="m-4 flex flex-row">
+      <div className="sm:m-4 flex flex-row">
         {session ? (
           <>
             <div className="mr-2 hover:cursor-pointer rounded-2xl p-1">

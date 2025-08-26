@@ -34,12 +34,20 @@ function page() {
   if (!mounted) return null;
   if (cartItems.length === 0) {
     return (
-      <div className="min-h-screen flex flex-col text-center justify-center items-center">
-        <span>
-          <ShoppingCart size={200} />
-        </span>
-        <h1 className=" text-7xl">your cart is empty</h1>
-      </div>
+      <>
+        <div className=" hidden min-h-screen sm:flex flex-col text-center justify-center items-center">
+          <span>
+            <ShoppingCart size={200} />
+          </span>
+          <h1 className=" sm:text-7xl">your cart is empty</h1>
+        </div>
+        <div className=" sm:hidden min-h-screen flex flex-col text-center justify-center items-center">
+          <span>
+            <ShoppingCart size={100} />
+          </span>
+          <h1 className=" sm:text-7xl">your cart is empty</h1>
+        </div>
+      </>
     );
   }
 

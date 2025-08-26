@@ -16,10 +16,10 @@ const winky = Winky_Rough({
 function layout({ children }) {
   return (
     <html lang="en" className={winky.className}>
-      <body className="flex flex-col min-h-screen relative">
+      <body className="flex flex-col min-h-screen relative ">
         <ClientProviders>
           <Navbar />
-          <main className="pt-16">{children}</main>
+          <main className="sm:pt-16">{children}</main>
           <Footer />
         </ClientProviders>
       </body>
