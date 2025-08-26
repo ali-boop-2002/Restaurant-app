@@ -10,9 +10,11 @@ import { ArrowBigLeft } from "lucide-react";
 export default async function AdminPage() {
   const session = await getServerSession(authOptions);
 
-  if (!session || !session.user?.isAdmin) {
+  if (!session.user?.isAdmin) {
     redirect("/");
   }
+
+  console.log(session);
   return (
     <div className="h-screen flex flex-col justify-center items-center">
       <label>Welcome {session.user.name}</label>
