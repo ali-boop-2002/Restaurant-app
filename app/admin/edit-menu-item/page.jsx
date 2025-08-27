@@ -6,13 +6,8 @@ import Items from "@/models/Item";
 import Link from "next/link";
 
 async function page() {
-  let menuItem;
-  try {
-    await connectDB();
-    menuItem = await Items.find({});
-  } catch (error) {
-    console.error(error);
-  }
+  await connectDB();
+  const menuItem = await Items.find({});
 
   return (
     <div className="min-h-screen">
