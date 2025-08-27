@@ -246,7 +246,7 @@ function page() {
                               {date.map((d, index) => (
                                 <div key={index}>
                                   <div
-                                    className={`text-sm flex flex-col justify-center w-[70px] md:w-[105px] items-center hover:bg-gray-400  rounded-3xl hover:cursor-pointer transition-colors focus:bg-gray-700 ${
+                                    className={`text-sm flex flex-col justify-center w-[60px] md:w-[105px] items-center hover:bg-gray-400  rounded-3xl hover:cursor-pointer transition-colors focus:bg-gray-700 ${
                                       active === index &&
                                       "bg-gray-900 text-white hover:bg-gray-900"
                                     }`}
