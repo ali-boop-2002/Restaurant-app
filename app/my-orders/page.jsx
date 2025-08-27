@@ -41,8 +41,8 @@ function page() {
                   order.orderStatus === "Served" && "bg-yellow-400 text-white"
                 } ${
                   order.orderStatus === "Ready For Pickup" &&
-                  "bg-blue-500 text-white"
-                } rounded-full px-4`}
+                  "bg-blue-500 text-white "
+                } rounded-full sm:px-4 px-1`}
               >
                 {order.orderStatus}
               </h1>
