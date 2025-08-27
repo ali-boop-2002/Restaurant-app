@@ -120,11 +120,17 @@ function page() {
       </div>
       <Link href={"/menu/checkout/confirm-Checkout"}>
         <button
-          className="bg-yellow-400 my-10 text-gray-800 p-4 rounded-4xl  hover:cursor-pointer hover:shadow-2xl hover:bg-yellow-300 hover:ring-4 transition-all hover:ring-yellow-100"
+          className={`${
+            signedIn
+              ? "bg-yellow-400 text-gray-800 hover:bg-yellow-300"
+              : "bg-red-500 text-white"
+          } my-10  p-4 rounded-4xl  hover:cursor-pointer hover:shadow-2xl  hover:ring-4 transition-all hover:ring-yellow-100`}
           disabled={!signedIn || cartItems.length === 0}
         >
           <div className="flex flex-row space-x-1">
-            <span> proceed to checkout</span>{" "}
+            <span>
+              {signedIn ? "proceed to checkout" : "Please log in to proceed"}
+            </span>{" "}
             <span className="w-[35px] text-center block"> {totalPrice}</span>
           </div>
         </button>
