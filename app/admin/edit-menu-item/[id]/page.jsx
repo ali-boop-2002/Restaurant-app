@@ -1,3 +1,5 @@
+"use client";
+
 import editMenuItem from "@/app/actions/editMenuItem";
 import connectDB from "@/config/database";
 import Items from "@/models/Item";
