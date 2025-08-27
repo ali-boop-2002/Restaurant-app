@@ -21,36 +21,40 @@ async function streamUpload(fileBuffer) {
 }
 
 export async function addMenuItem(formData) {
-  await connectDB();
-  const session = await getServerSession(authOptions);
-  if (!session.user || !session.user.isAdmin) {
-    throw new Error("invalid credentials");
-  }
-  const rawPrice = formData.get("price");
-  const price = Number(rawPrice);
-  if (isNaN(price)) throw new Error("Invalid price value.");
-  const file = formData.get("image");
-  let imageUrl = "";
+  try {
+    await connectDB();
+    const session = await getServerSession(authOptions);
+    if (!session.user || !session.user.isAdmin) {
+      throw new Error("invalid credentials");
+    }
+    const rawPrice = formData.get("price");
+    const price = Number(rawPrice);
+    if (isNaN(price)) throw new Error("Invalid price value.");
+    const file = formData.get("image");
+    let imageUrl = "";
 
-  if (file && typeof file === "object") {
-    const buffer = Buffer.from(await file.arrayBuffer());
-    const uploadResult = await streamUpload(buffer);
-    imageUrl = uploadResult.secure_url;
+    if (file && typeof file === "object") {
+      const buffer = Buffer.from(await file.arrayBuffer());
+      const uploadResult = await streamUpload(buffer);
+      imageUrl = uploadResult.secure_url;
+    }
+    const menuItem = {
+      name: formData.get("name"),
+      hasSides: formData.get("hasSides") === "on",
+      description: formData.get("description"),
+      image: imageUrl,
+      sides: formData.getAll("sides"),
+      hasSize: formData.get("hasSize") === "on",
+      price,
+      isFeatured: formData.get("isFeatured") === "on",
+      veg: formData.get("veg") === "on",
+      category: formData.get("category"),
+    };
+
+    const newMenuItem = new Items(menuItem);
+    await newMenuItem.save();
+    redirect(`/menu`);
+  } catch (error) {
+    console.log(error);
   }
-  const menuItem = {
-    name: formData.get("name"),
-    hasSides: formData.get("hasSides") === "on",
-    description: formData.get("description"),
-    image: imageUrl,
-    sides: formData.getAll("sides"),
-    hasSize: formData.get("hasSize") === "on",
-    price,
-    isFeatured: formData.get("isFeatured") === "on",
-    veg: formData.get("veg") === "on",
-    category: formData.get("category"),
-  };
-  console.log(menuItem);
-  const newMenuItem = new Items(menuItem);
-  await newMenuItem.save();
-  redirect(`/menu`);
 }
