@@ -11,7 +11,7 @@ async function deleteMenuItem(id) {
   try {
     await connectDB();
     const session = await getServerSession(authOptions);
-    if (!session.user || !session.user.isAdmin) {
+    if (!session.user.isAdmin || !session) {
       throw new Error("invalid credentials");
     }
 
