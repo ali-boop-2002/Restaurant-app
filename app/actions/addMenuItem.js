@@ -22,6 +22,7 @@ async function streamUpload(fileBuffer) {
 
 export async function addMenuItem(formData) {
   try {
+    console.log(formData);
     await connectDB();
     const session = await getServerSession(authOptions);
     if (!session.user || !session.user.isAdmin) {
@@ -44,7 +45,7 @@ export async function addMenuItem(formData) {
       description: formData.get("description"),
       image: imageUrl,
       sides: formData.getAll("sides"),
-      hasSize: formData.get("hasSize") === "on",
+      size: formData.get("hasSize") === "on",
       price,
       isFeatured: formData.get("isFeatured") === "on",
       veg: formData.get("veg") === "on",

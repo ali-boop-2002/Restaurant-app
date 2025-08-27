@@ -39,23 +39,8 @@ const ItemSchema = new Schema({
     type: [String],
   },
   size: {
-    type: [String],
-    default: ["small", "medium", "large"],
-    enum: ["small", "medium", "large"],
-    validate: {
-      validator: function (v) {
-        // If hasSides is true, sides must not be empty
-        if (this.hasSize && !v) {
-          return false;
-        }
-        // If hasSides is false, sides must be empty
-        if (!this.hasSize && v) {
-          return false;
-        }
-        return true;
-      },
-      message: "Invalid size based on hasSize value",
-    },
+    type: Boolean,
+    default: false,
   },
   price: {
     type: Number,
