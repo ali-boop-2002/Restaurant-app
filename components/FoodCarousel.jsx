@@ -11,7 +11,7 @@ import Image from "next/image";
 const images = [
   "/Images/biryani.png",
   "/Images/buttenchicken.png",
-  "/Images/Samosa.png",
+  "/Images/samosachaat.jpg",
 ];
 
 export default function FoodCarousel() {
