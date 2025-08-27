@@ -5,6 +5,10 @@ import { Suspense } from "react";
 
 const { default: FoodCarousel } = require("@/components/FoodCarousel");
 
+export const metadata = {
+  title: "Pakistani Indian cuisines",
+  description: "All the food here is made fresh by our professional chef",
+};
 function page() {
   return (
     <>
