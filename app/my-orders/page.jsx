@@ -30,9 +30,9 @@ function page() {
         {orders?.map((order) => (
           <div
             key={order._id}
-            className=" m-2 pb-4  border-b-2 border-gray-200"
+            className=" sm:m-2 px-2 sm:px-0 pb-4  border-b-2 border-gray-200 "
           >
-            <div className="bg-gray-100 flex flex-row pl-4 justify-between rounded-full text-xl font-sans">
+            <div className=" flex flex-row sm:pl-4  justify-between rounded-full sm:text-xl font-sans">
               <h1> {order._id}</h1>
               <h1
                 className={`${
@@ -48,7 +48,7 @@ function page() {
               </h1>
             </div>
             <div>Created: {new Date(order.createdAt).toLocaleString()}</div>
-            <ul className="mt-2 space-y-1">
+            <ul className="sm:mt-2 space-y-1 ">
               {order.orderItems?.map((item, idx) => (
                 <li key={item._id} className="flex justify-between">
                   <span>
