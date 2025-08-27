@@ -11,7 +11,6 @@ import { useDispatch, useSelector } from "react-redux";
 function page() {
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
-  console.log(cartItems);
   const [mounted, setMounted] = useState(false);
   const router = useRouter();
   const { data: session, status } = useSession();
