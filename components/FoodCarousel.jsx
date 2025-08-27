@@ -9,9 +9,9 @@ import "swiper/css/pagination";
 import Image from "next/image";
 
 const images = [
-  "/Images/Screenshot 2025-07-23 at 10.26.34 PM.png",
-  "/Images/Screenshot 2025-07-23 at 10.28.42 PM.png",
-  "/Images/Screenshot 2025-07-23 at 10.25.01 PM.png",
+  "/Images/biryani.png",
+  "/Images/buttenchicken.png",
+  "/Images/Samosa.png",
 ];
 
 export default function FoodCarousel() {
