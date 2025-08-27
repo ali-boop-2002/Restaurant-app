@@ -37,6 +37,7 @@ function OrderScreen({ orderId }) {
       }).unwrap();
     } catch (err) {
       console.error("Error details:", err.data || err.message);
+      console.log(err);
     }
   };
 
@@ -109,15 +110,16 @@ function OrderScreen({ orderId }) {
           </div>
         </div>
       </div>
-      <div
+      <button
         className={`absolute bottom-0 mt-5 ${
           myOrder?.orderStatus === "Confirmed" ? "bg-green-500" : "bg-red-500"
         } p-4 w-full text-white text-2xl hover:cursor-pointer font-bold text-center active:bg-red-700 
         }`}
         onClick={updating ? undefined : handleConfirmOrder}
+        disabled={myOrder?.orderStatus === "Served"}
       >
         <h2>{myOrder?.orderStatus}</h2>
-      </div>
+      </button>
     </div>
   );
 }

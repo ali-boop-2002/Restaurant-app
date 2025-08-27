@@ -30,54 +30,86 @@ export const authOptions = {
 
         const { email, password } = credentials;
 
-        await connectDB();
+        try {
+          await connectDB();
 
-        const user = await User.findOne({ email });
-        if (!user) throw new Error("No user found");
+          const user = await User.findOne({ email });
+          if (!user) throw new Error("No user found");
 
-        const isValid = await bcrypt.compare(password, user.password);
-        if (!isValid) throw new Error("Invalid credentials");
+          const isValid = await bcrypt.compare(password, user.password);
+          if (!isValid) throw new Error("Invalid credentials");
 
-        return {
-          id: user._id,
-          name: user.username,
-          email: user.email,
-        };
+          return {
+            id: user._id,
+            name: user.username,
+            email: user.email,
+          };
+        } catch (error) {
+          console.error("Credentials auth error:", error);
+          throw new Error("Authentication failed");
+        }
       },
     }),
   ],
   callbacks: {
     // Invoked on successful sign in
     async signIn({ user, account, profile }) {
-      await connectDB();
+      try {
+        await connectDB();
 
-      if (account.provider === "google") {
-        const userExists = await User.findOne({ email: profile.email });
+        if (account.provider === "google") {
+          const userExists = await User.findOne({ email: profile.email });
 
-        if (!userExists) {
-          const username = profile.name.slice(0, 20);
+          if (!userExists) {
+            const username = profile.name.slice(0, 20);
 
-          await User.create({
-            email: profile.email,
-            username,
-            image: profile.picture,
-          });
+            await User.create({
+              email: profile.email,
+              username,
+              image: profile.picture,
+            });
+          }
         }
-      }
 
-      // Allow sign-in
-      return true;
+        // Allow sign-in
+        return true;
+      } catch (error) {
+        console.error("SignIn callback error:", error);
+        return false;
+      }
     },
     // Session callback function that modifies the session object
     async session({ session }) {
-      // 1. Get user from the database
-      const user = await User.findOne({ email: session.user.email });
-      // 2. Assign user id from the session
-      session.user.id = user._id.toString();
+      try {
+        // 1. Get user from the database
+        await connectDB();
+        const user = await User.findOne({ email: session.user.email });
 
-      session.user.isAdmin = user.isAdmin;
-      // 3. Return session
-      return session;
+        if (!user) {
+          console.error(
+            "User not found in session callback:",
+            session.user.email
+          );
+          return session;
+        }
+
+        // 2. Assign user id from the session
+        session.user.id = user._id.toString();
+        session.user.isAdmin = user.isAdmin || false;
+
+        // 3. Return session
+        return session;
+      } catch (error) {
+        console.error("Session callback error:", error);
+        // Return the original session without modifications to prevent crashes
+        return session;
+      }
     },
   },
+  // Add session configuration for better production handling
+  session: {
+    strategy: "jwt",
+  },
+  // Add secret configuration
+  secret: process.env.NEXTAUTH_SECRET,
 };
